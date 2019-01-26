@@ -34,4 +34,11 @@ class TestAccountTraffic(unittest.TestCase):
 	def test_get_lowest_of_data(self, _, account_low, expected_low, expected_count):
 		self.assertEqual(account_low[0], expected_low)
 		self.assertEqual(account_low[1], expected_count)
-	
+
+	@parameterized.expand([
+	('All the same', test_object_1.account_recommendation, {'Average': ['P1 or P1.5', 5.0], 'High': ['P1 or P1.5', 5, 10], 'Low': ['P1 or P1.5', 5, 10]}),
+	('Small data set', test_object_2.account_recommendation, {'Low': ['P1 or P1.5', 2, 1], 'Average': ['P2', 9.75], 'High': ['P4', 20, 1]}),
+	('Large gap', test_object_3.account_recommendation, {'High': ['P6', 100, 1], 'Low': ['P1 or P1.5', 1, 1], 'Average': ['P6', 50.5]}),
+	])
+	def test_get_server_recommendation(self, _, account_recommendation, expected_recommendation):
+		self.assertEqual(account_recommendation, expected_recommendation)
