@@ -23,7 +23,7 @@ def print_to_screen(account_object):
 	for key, value in account_object.account_recommendation.items():
 		print(bold_blue + 'Based on {}: {}'.format(key, value[0]) + reset_text)
 
-if __name__ == '__main__'
+if __name__ == '__main__':
 	"""Parses arugments to create the AccountData object, containing traffic data
 	and the plan level recommendations"""
 
@@ -31,6 +31,7 @@ if __name__ == '__main__'
 	parser.add_argument('--account', '-a',
 						help='Account name to pull traffic for')
 	parser.add_argument('--url', '-u',
+						default='https://branden-account-api.herokuapp.com/traffic/api/v1/',
 						help='Enter API URL to make request to')
 	args = parser.parse_args()
 	AccountData = AccountData(args.account, args.url)
