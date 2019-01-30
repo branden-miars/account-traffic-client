@@ -24,15 +24,15 @@ def print_to_screen(account_object):
 		print(bold_blue + 'Based on {}: {}'.format(key, value[0]) + reset_text)
 
 if __name__ == '__main__':
-	"""Parses arugments to create the AccountData object, containing traffic data
+	"""Parses arugments to create the account_data object, containing traffic data
 	and the plan level recommendations"""
 
 	parser = argparse.ArgumentParser(description='Pull account traffic report')
 	parser.add_argument('--account', '-a',
-						help='Account name to pull traffic for')
+		help='Account name to pull traffic for')
 	parser.add_argument('--url', '-u',
-						default='https://branden-account-api.herokuapp.com/traffic/api/v1/',
-						help='Enter API URL to make request to')
+		default='https://branden-account-api.herokuapp.com/traffic/api/v1/',
+		help='Enter API URL to make request to')
 	args = parser.parse_args()
-	AccountData = AccountData(args.account, args.url)
-	print_to_screen(AccountData)
+	account_data = AccountData(args.account, args.url)
+	print_to_screen(account_data)
